@@ -71,15 +71,6 @@ bool UbpFSBPLibrary::GetAllFilesFromPath(TArray<FString>& files, FString directo
 	return true;
 }
 
-int32 UbpFSBPLibrary::GetFileSize(FString filePath) {
-
-	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) { return -1; }
-
-	const int32 FileSize = FPlatformFileManager::Get().GetPlatformFile().FileSize(*filePath);
-
-	return FileSize;
-}
-
 bool UbpFSBPLibrary::CreateDirectory(FString newDirPath)
 {
 	IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
@@ -171,6 +162,41 @@ bool UbpFSBPLibrary::DoesFileExist(FString filePath) {
 	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) {
 		return false;
 	}
+	return true;
+}
+
+//------------------------------------
+
+int32 UbpFSBPLibrary::GetFileSize(FString filePath) {
+
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) { return -1; }
+
+	const int32 FileSize = FPlatformFileManager::Get().GetPlatformFile().FileSize(*filePath);
+
+	return FileSize;
+}
+
+bool UbpFSBPLibrary::GetTimeStamp(FString filePath, FDateTime& timeModified) {
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) {
+		return false;
+	} 
+	timeModified = FPlatformFileManager::Get().GetPlatformFile().GetTimeStamp(*filePath);
+	return true;
+}
+
+bool UbpFSBPLibrary::IsReadOnly(FString filePath, bool& readOnly) {
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) {
+		return false;
+	}
+	readOnly = FPlatformFileManager::Get().GetPlatformFile().IsReadOnly(*filePath);
+	return true;
+}
+
+bool UbpFSBPLibrary::SetReadOnly(FString filePath, bool readOnly) {
+	if (!FPlatformFileManager::Get().GetPlatformFile().FileExists(*filePath)) {
+		return false;
+	}
+	readOnly = FPlatformFileManager::Get().GetPlatformFile().SetReadOnly(*filePath, readOnly);
 	return true;
 }
 
