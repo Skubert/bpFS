@@ -173,3 +173,15 @@ bool UbpFSBPLibrary::DoesFileExist(FString filePath) {
 	}
 	return true;
 }
+
+//------------------------------------
+
+bool UbpFSBPLibrary::SaveStringToFile(FString str, FString filePath)
+{
+	return FFileHelper::SaveStringToFile(str, *filePath);
+}
+
+bool UbpFSBPLibrary::LoadFileToString(FString str, FString& filePath)
+{
+	return FFileHelper::LoadFileToString(str, *filePath);
+}

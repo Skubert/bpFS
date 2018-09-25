@@ -16,25 +16,25 @@ class UbpFSBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToGame();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToEngine();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToGameContent();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToEngineContent();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToGamePlugins();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetPathToEnginePlugins();
 
-	UFUNCTION(BlueprintPure, Category = "bpIO")
+	UFUNCTION(BlueprintPure, Category = "bpIO|DirectoryGetter")
 	static FString GetLaunchDir();
 
 	/* Get all files from given directory. */
@@ -71,5 +71,11 @@ class UbpFSBPLibrary : public UBlueprintFunctionLibrary
 
 	UFUNCTION(BlueprintPure, Category = "bpIO")
 	static bool DoesFileExist(FString filePath);
+
+	UFUNCTION(BlueprintCallable, Category = "bpIO")
+	static bool SaveStringToFile(FString str, FString filePath);
+
+	UFUNCTION(BlueprintCallable, Category = "bpIO")
+	static bool LoadFileToString(FString str, FString& filePath);
 
 };
