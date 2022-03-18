@@ -8,7 +8,7 @@ UbpFSBPLibrary::UbpFSBPLibrary(const FObjectInitializer& ObjectInitializer)
 }
 
 FString UbpFSBPLibrary::GetPathToGame() {
-	FString tempPath = FPaths::GameDir();
+	FString tempPath = FPaths::ProjectDir();
 	FPaths::NormalizeDirectoryName(tempPath);
 	return tempPath;
 }
@@ -20,7 +20,7 @@ FString UbpFSBPLibrary::GetPathToEngine() {
 }
 
 FString UbpFSBPLibrary::GetPathToGameContent() {
-	FString tempPath = FPaths::GameContentDir();
+	FString tempPath = FPaths::ProjectContentDir();
 	FPaths::NormalizeDirectoryName(tempPath);
 	return tempPath;
 }
@@ -32,7 +32,7 @@ FString UbpFSBPLibrary::GetPathToEngineContent() {
 }
 
 FString UbpFSBPLibrary::GetPathToGamePlugins() {
-	FString tempPath = FPaths::GamePluginsDir();
+	FString tempPath = FPaths::ProjectPluginsDir();
 	FPaths::NormalizeDirectoryName(tempPath);
 	return tempPath;
 }
@@ -207,7 +207,7 @@ bool UbpFSBPLibrary::SaveStringToFile(FString str, FString filePath)
 	return FFileHelper::SaveStringToFile(str, *filePath);
 }
 
-bool UbpFSBPLibrary::LoadFileToString(FString str, FString& filePath)
+bool UbpFSBPLibrary::LoadFileToString(FString& str, FString filePath)
 {
 	return FFileHelper::LoadFileToString(str, *filePath);
 }

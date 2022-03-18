@@ -89,6 +89,6 @@ class UbpFSBPLibrary : public UBlueprintFunctionLibrary
 	static bool SaveStringToFile(FString str, FString filePath);
 
 	UFUNCTION(BlueprintCallable, Category = "bpFS")
-	static bool LoadFileToString(FString str, FString& filePath);
+	static bool LoadFileToString(FString& str, FString filePath);
 
 };
